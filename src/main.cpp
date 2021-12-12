@@ -6,6 +6,12 @@ using namespace std;
 
 string filename123 = "";
 
+enum fail_opath {
+  FAIL_OPATH_NONE,
+  FAIL_OPATH_EXIST,
+  FAIL_OPATH_NOT_DIR,
+  FAIL_OPATH_NOT_EXIST,
+};
 
 string translateToJava(string line) {
   if (line.find("int") != string::npos && line.find("main()") != string::npos) {
@@ -35,7 +41,7 @@ bool code_execute(string s) {
 }
 
 int main() {
-  freopen("../test/Testing.sjs", "r", stdin);
+  freopen("../test/Testing.javalite", "r", stdin);
   string content = "";
   while (getline(cin, content)) {
     // get the class name after "class: "
