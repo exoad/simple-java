@@ -2,9 +2,7 @@
 #include "include/FileDeclarator.hxx"
 #include "include/Macros.hxx"
 #include "include/Checker.hxx"
-
-
-#include "temp/GlobalHolders.h"
+#include "include/Operators.hxx"
 
 // standard headers from stdlib
 #include<string>

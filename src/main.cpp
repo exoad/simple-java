@@ -1,17 +1,10 @@
 #include "include/BigInclude.hxx"
-#include "include/Init.h"
+#include "include/Init.hxx"
 
-using namespace filedec;
 using namespace std;
+using namespace filedec;
 
 string filename123 = "";
-
-enum fail_opath {
-  FAIL_OPATH_NONE,
-  FAIL_OPATH_EXIST,
-  FAIL_OPATH_NOT_DIR,
-  FAIL_OPATH_NOT_EXIST,
-};
 
 string translateToJava(string line) {
   if (line.find("int") != string::npos && line.find("main()") != string::npos) {
@@ -26,9 +19,9 @@ string translateToJava(string line) {
  */
 void writeToFile(string line) {
   ofstream file;
-  file.open(file_dir, ios::app);
+  file.open(file_dir_holder, ios::app);
   file << line << "\n";
-  file_contents += line + "\n";
+  file_contents_holder += line + "\n";
 }
 
 bool check_if_proper(string s) {
@@ -51,19 +44,25 @@ signed main() {
     if (content.find("class: ") != string::npos) {
       string class_name = content.substr(content.find("class: ") + 7);
       init_file(class_name, 1);
-    } else if(content.find("enum: ") != string::npos) {
+    }
+    else if (content.find("enum: ") != string::npos) {
       string class_name = content.substr(content.find("enum: ") + 6);
       init_file(class_name, 2);
-    } else if (content.find("inter: ") != string::npos) {
+    }
+    else if (content.find("inter: ") != string::npos) {
       string class_name = content.substr(content.find("inter: ") + 7);
       init_file(class_name, 3);
-    } else if (content.find("abst_class") != string::npos) {
+    }
+    else if (content.find("abst_class") != string::npos) {
       string class_name = content.substr(content.find("abst_class") + 11);
       init_file(class_name, 4);
+    }
+    else {
+
     }
     cin >> content;
     writeToFile(translateToJava(content));
   }
-  cout << "Created Class file: " << class_name << endl;
+  cout << "Created Class file: " << class_name_holder << endl;
   cout << "Success" << endl;
 }
