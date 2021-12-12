@@ -40,8 +40,11 @@ bool code_execute(string s) {
   return true;
 }
 
-int main() {
-  freopen("../test/Testing.javalite", "r", stdin);
+signed main() {
+  cout << "Enter the file path: ";
+  string no_comp;
+  cin >> no_comp;
+  freopen(no_comp.c_str(), "r", stdin);
   string content = "";
   while (getline(cin, content)) {
     // get the class name after "class: "
